@@ -27,7 +27,7 @@ const Hero = () => {
             <a href="#features" className="hover:text-green-600 transition">
               Features
             </a>
-            <a href="#testimonials" className="hover:text-green-600 transition">
+            <a href="#testimonial" className="hover:text-green-600 transition">
               Testimonials
             </a>
             <a href="#cta" className="hover:text-green-600 transition">

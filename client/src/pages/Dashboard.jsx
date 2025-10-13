@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { useState } from "react";
 import {
   FilePenLineIcon,
   PlusIcon,
@@ -13,12 +13,12 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const colors = ["#9333ea", "#d97706", "#dc2626", "#0284c7", "#16a34a"];
-  const [allResumes, setAllResumes] = React.useState([]);
-  const [showCreateResume, setShowCreateResume] = React.useState(false);
-  const [showUploadResume, setShowUploadResume] = React.useState(false);
-  const [title, setTitle] = React.useState("");
-  const [resume, setResume] = React.useState(null);
-  const [editResumeId, setEditResumeId] = React.useState("");
+  const [allResumes, setAllResumes] = useState([]);
+  const [showCreateResume, setShowCreateResume] = useState(false);
+  const [showUploadResume, setShowUploadResume] = useState(false);
+  const [title, setTitle] = useState("");
+  const [resume, setResume] = useState(null);
+  const [editResumeId, setEditResumeId] = useState("");
 
   const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ const Dashboard = () => {
       "Are you sure you want to delete this resume?"
     );
     if (confirmDelete) {
-      setAllResumes((prev) => prev.filter(resume => resume._id !== resumeId));
+      setAllResumes((prev) => prev.filter((resume) => resume._id !== resumeId));
     }
   };
 
@@ -89,7 +89,7 @@ const Dashboard = () => {
               <button
                 key={index}
                 onClick={() => {
-                  navigate(`/app/builder/resume/${resume._id}`);
+                  navigate(`/app/builder/${resume._id}`);
                 }}
                 className="relative w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 border group hover:shadow-lg transition-all duration-300 cursor-pointer"
                 style={{

@@ -13,6 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import PersonalInfoForm from "../components/PersonalInfoForm";
+import ResumePreview from "../components/ResumePreview";
 
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
@@ -140,6 +141,11 @@ const ResumeBuilder = () => {
             <div>{/* Buttons */}</div>
 
             {/* Resume Preview Component */}
+            <ResumePreview
+              data={resumeData}
+              template={resumeData.template}
+              accentColor={resumeData.accentColor}
+            />
           </div>
         </div>
       </div>

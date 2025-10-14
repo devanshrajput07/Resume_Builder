@@ -66,7 +66,7 @@ export const dummyResumeData = [
             }
         ],
         template: "minimal-image",
-        accent_color: "#14B8A6",
+        accentColor: "#14B8A6",
         project: [
             {
                 name: "Team Task Management System",
@@ -141,7 +141,7 @@ export const dummyResumeData = [
             }
         ],
         template: "minimal-image",
-        accent_color: "#6366F1",
+        accentColor: "#6366F1",
         project: [
             {
                 name: "FitTrack - Fitness Dashboard",
@@ -216,7 +216,7 @@ export const dummyResumeData = [
             }
         ],
         template: "minimal-image",
-        accent_color: "#F59E0B",
+        accentColor: "#F59E0B",
         project: [
             {
                 name: "Invoicr - Invoice Management System",

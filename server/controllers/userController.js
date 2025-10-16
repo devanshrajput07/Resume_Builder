@@ -1,4 +1,5 @@
-import User from "../models/UserSchema";
+import User from "../models/userSchema.js";
+import Resume from "../models/ResumeSchema.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -29,20 +30,21 @@ export const registerUser = async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ name, email, password: hashedPassword });
 
-    // Save user to database
-    await newUser.save();
+    // save new user to database
+    const newUser = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
     // Return success response
     const token = generateToken(newUser._id);
     newUser.password = undefined; // Hide password in response
-    return res
-      .status(201)
-      .json({ message: "User registered successfully", token, user: newUser });
+    return res.status(201).json({ message: "User registered successfully", token, user: newUser });
   } catch (error) {
-    console.error("Error registering user:", error);
-    return res.status(500).json({ message: "Internal server error" });
+    // console.error("Error registering user:", error);
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -74,8 +76,8 @@ export const loginUser = async (req, res) => {
     user.password = undefined; // Hide password in response
     return res.status(200).json({ message: "Login successful", token, user });
   } catch (error) {
-    console.error("Error logging in user:", error);
-    return res.status(500).json({ message: "Internal server error" });
+    // console.error("Error logging in user:", error);
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -91,7 +93,20 @@ export const getUserById = async (req, res) => {
     user.password = undefined; // Hide password in response
     return res.status(200).json({ user });
   } catch (error) {
-    console.error("Error fetching user data:", error);
-    return res.status(500).json({ message: "Internal server error" });
+    // console.error("Error fetching user data:", error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// User Resumes Controller
+//POST : /api/users/resumes
+export const getUserResumes = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const resumes = await Resume.find({ user: userId });
+    return res.status(200).json({ resumes });
+  } catch (error) {
+    // console.error("Error fetching user resumes:", error);
+    return res.status(500).json({ message: error.message });
   }
 };

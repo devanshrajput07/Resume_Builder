@@ -18,13 +18,14 @@ const Preview = () => {
 
   useEffect(() => {
     loadResume();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return resumeData ? (
     <div className="bg-slate-100">
       <div className="max-w-3xl mx-auto py-10">
         <ResumePreview
-          resumeData={resumeData}
+          data={resumeData}
           template={resumeData.template}
           accentColor={resumeData.accentColor}
           classes="py-4 bg-white"

@@ -66,6 +66,7 @@ const ResumeBuilder = () => {
 
   useEffect(() => {
     loadExistingResume();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeResumeVisibility = async () => {

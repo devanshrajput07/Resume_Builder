@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const protect = async (req, res, next) => {
+export const protect = async (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).json({ message: "Authorization denied" });
@@ -14,5 +14,3 @@ const protect = async (req, res, next) => {
     return res.status(401).json({ message: "Authorization denied" });
   }
 };
-
-export default protect;

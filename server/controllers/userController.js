@@ -1,6 +1,6 @@
 import User from "../models/userSchema.js";
-import Resume from "../models/ResumeSchema.js";
-import bcrypt from "bcryptjs";
+import Resume from "../models/resumeSchema.js";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 //Generate JWT Token

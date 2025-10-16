@@ -1,4 +1,4 @@
-import Resume from "../models/resumeModel.js";
+import Resume from "../models/resumeSchema.js";
 import imagekit from "../config/ImageKit.js";
 import fs from "fs";
 

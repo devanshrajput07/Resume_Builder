@@ -6,7 +6,7 @@ import {
   deleteResume,
   getPublicResumeById,
 } from "../controllers/resumeController.js";
-import protect from "../middleware/authMiddleware.js";
+import { protect } from "../middlewares/authMiddleware.js";
 import upload from "../config/multer.js";
 
 const resumeRouter = express.Router();

@@ -6,7 +6,7 @@ import fs from "fs";
 // POST : /api/resumes/create
 export const createResume = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.userId;
     const { title } = req.body;
 
     // create new resume
@@ -24,7 +24,7 @@ export const createResume = async (req, res) => {
 // DELETE : /api/resumes/delete
 export const deleteResume = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.userId;
     const { resumeId } = req.params;
 
     // Find and delete the resume
@@ -42,7 +42,7 @@ export const deleteResume = async (req, res) => {
 // GET : /api/resumes/get
 export const getResumeById = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.userId;
     const { resumeId } = req.params;
 
     // Find the resume
@@ -87,11 +87,11 @@ export const getPublicResumeById = async (req, res) => {
 // PUT : /api/resumes/update
 export const updateResume = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.userId;
     const { resumeId, resumeData, removeBackground } = req.body;
-    const image = req.fil
+    const image = req.fil;
 
-    let resumeDataCopy = JSON.parse(resumeData);
+    let resumeDataCopy = JSON.parse(JSON.stringify(resumeData));
 
     // handle profile image update
     if (image) {

@@ -65,7 +65,7 @@ export const enhanceJobDescription = async (req, res) => {
 // POST : /api/ai/upload-resume
 export const uploadResume = async (req, res) => {
   try {
-    const { resumeText, Title } = req.body;
+    const { resumeText, title } = req.body;
     const userId = req.userId;
 
     if (!resumeText) {
@@ -135,7 +135,7 @@ export const uploadResume = async (req, res) => {
     const parsedData = JSON.parse(extractedData);
     const newResume = await Resume.create({
       userId,
-      title: Title || "Untitled Resume",
+      title: title || "Untitled Resume",
       ...parsedData,
     });
     return res.json({ resumeId: newResume._id });

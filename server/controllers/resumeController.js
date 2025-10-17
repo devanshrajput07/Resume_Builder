@@ -13,7 +13,9 @@ export const createResume = async (req, res) => {
     const newResume = await Resume.create({ userId, title });
 
     //return success response
-    return res.status(201).json({ message: "Resume created successfully", resume: newResume });
+    return res
+      .status(201)
+      .json({ message: "Resume created successfully", resume: newResume });
   } catch (error) {
     // console.error("Error creating resume:", error);
     return res.status(500).json({ message: error.message });
@@ -89,9 +91,14 @@ export const updateResume = async (req, res) => {
   try {
     const userId = req.userId;
     const { resumeId, resumeData, removeBackground } = req.body;
-    const image = req.fil;
+    const image = req.file;
 
-    let resumeDataCopy = JSON.parse(JSON.stringify(resumeData));
+    let resumeDataCopy;
+    if (typeof resumeData === "string") {
+      resumeDataCopy = await JSON.parse(resumeData);
+    } else {
+      resumeDataCopy = structuredClone(resumeData);
+    }
 
     // handle profile image update
     if (image) {
@@ -117,7 +124,9 @@ export const updateResume = async (req, res) => {
     );
 
     // return success response
-    return res.status(200).json({ message: "Resume updated successfully", resume });
+    return res
+      .status(200)
+      .json({ message: "Resume updated successfully", resume });
   } catch (error) {
     // console.error("Error updating resume:", error);
     return res.status(500).json({ message: error.message });

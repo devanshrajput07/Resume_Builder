@@ -12,7 +12,7 @@ const CallToAction = () => {
           Build a Professional Resume That Helps You Stand Out and Get Hired.
         </p>
         <Link
-          to="/register"
+          to="/app?state=register"
           className="flex items-center gap-2 rounded py-3 px-8 bg-green-600 hover:bg-green-700 transition text-white"
         >
           <span>Get Started</span>

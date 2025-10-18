@@ -92,7 +92,7 @@ const Hero = () => {
           <a href="#features" className="text-white">
             Features
           </a>
-          <a href="#testimonials" className="text-white">
+          <a href="#testimonial" className="text-white">
             Testimonials
           </a>
           <a href="#cta" className="text-white">

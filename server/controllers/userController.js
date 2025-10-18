@@ -41,7 +41,9 @@ export const registerUser = async (req, res) => {
     // Return success response
     const token = generateToken(newUser._id);
     newUser.password = undefined; // Hide password in response
-    return res.status(201).json({ message: "User registered successfully", token, user: newUser });
+    return res
+      .status(201)
+      .json({ message: "User registered successfully", token, user: newUser });
   } catch (error) {
     // console.error("Error registering user:", error);
     return res.status(500).json({ message: error.message });
@@ -103,7 +105,7 @@ export const getUserById = async (req, res) => {
 export const getUserResumes = async (req, res) => {
   try {
     const userId = req.userId;
-    const resumes = await Resume.find({ user: userId });
+    const resumes = await Resume.find({ userId });
     return res.status(200).json({ resumes });
   } catch (error) {
     // console.error("Error fetching user resumes:", error);
